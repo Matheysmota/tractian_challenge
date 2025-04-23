@@ -1,10 +1,12 @@
-import 'dart:io';
+import 'file_reader.dart';
 
 class EnvironmentConfig {
+  final FileReader fileReader;
+
+  const EnvironmentConfig(this.fileReader);
 
   Future<Map<String, String>> init(String filePath) async {
-    final file = File(filePath);
-    final lines = await file.readAsLines();
+    final lines = await fileReader.readAsLines(filePath);
     final env = <String, String>{};
 
     for (var line in lines) {

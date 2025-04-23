@@ -10,5 +10,4 @@ abstract class BaseException implements Exception {
   final StackTrace? stackTrace;
   final dynamic data;
   final int? statusCode;
-
 }
