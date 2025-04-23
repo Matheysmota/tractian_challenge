@@ -43,8 +43,8 @@ class LocalStorageImpl implements LocalStorage {
   }) async {
     try {
       final mappedModel = toJson(value);
-      await _prefs.setString(key, json.encode(mappedModel));
-      return true;
+      final result = await _prefs.setString(key, json.encode(mappedModel));
+      return result;
     } catch (e) {
       return false;
     }
