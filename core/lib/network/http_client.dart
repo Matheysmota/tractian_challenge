@@ -5,8 +5,4 @@ abstract class HttpClient {
   Future<HttpClientResponse> get({required HttpClientRequest request});
 
   Future<HttpClientResponse> post({required HttpClientRequest request});
-
-  Future<HttpClientResponse> put({required HttpClientRequest request});
-
-  Future<HttpClientResponse> delete({required HttpClientRequest request});
 }

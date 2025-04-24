@@ -11,19 +11,6 @@ class DioHttpClient implements HttpClient {
   final Dio _dio;
 
   @override
-  Future<HttpClientResponse> delete({required HttpClientRequest request}) {
-    return _executeRequest(
-      () => _dio.delete(
-        request.path,
-        options: Options(
-          headers: request.headers,
-        ),
-        data: request.body,
-      ),
-    );
-  }
-
-  @override
   Future<HttpClientResponse> get({required HttpClientRequest request}) {
     return _executeRequest(
       () => _dio.get(
@@ -39,19 +26,6 @@ class DioHttpClient implements HttpClient {
   Future<HttpClientResponse> post({required HttpClientRequest request}) {
     return _executeRequest(
       () => _dio.post(
-        request.path,
-        options: Options(
-          headers: request.headers,
-        ),
-        data: request.body,
-      ),
-    );
-  }
-
-  @override
-  Future<HttpClientResponse> put({required HttpClientRequest request}) {
-    return _executeRequest(
-      () => _dio.put(
         request.path,
         options: Options(
           headers: request.headers,
