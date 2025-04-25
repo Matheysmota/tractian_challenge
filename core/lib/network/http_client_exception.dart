@@ -1,4 +1,3 @@
-
 import '../errors/base_exception.dart';
 
 class HttpClientException implements BaseException {
