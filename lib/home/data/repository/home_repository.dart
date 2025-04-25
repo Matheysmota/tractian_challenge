@@ -2,7 +2,6 @@ import 'package:core/core.dart';
 
 import '../../domain/model/cache_time_stamp.dart';
 import '../../domain/model/companies.dart';
-import '../../domain/model/company.dart';
 import '../../domain/repository/home_repository.dart';
 import '../service/home_service.dart';
 import '../mapper/company_mapper.dart';
@@ -32,20 +31,20 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Stream<List<Company>> getCompanies() async* {
+  Stream<Companies> getCompanies() async* {
     final cache = await _tryGetValidCache();
 
     if (cache != null) {
-      yield cache.companies;
+      yield cache;
     }
 
     final connection = await _connectionManager.observe.first;
-    if (connection == ConnectionStatus.disconnected || cache != null) return;
+    if (connection == ConnectionStatus.disconnected) return;
 
     final model = (await _service.fetchCompanies()).toDomain();
     if (model != cache) {
       _saveToCache(companies: model);
-      yield model.companies;
+      yield model;
     }
   }
 
